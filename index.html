@@ -7,10 +7,9 @@
 
   <!-- Styles -->
   <link href="style.css" rel="stylesheet" />
-
+  <script src="https://unpkg.com/feather-icons"></script>
 
   <!-- Supabase -->
-
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
   <!-- Fonts -->
@@ -25,7 +24,7 @@
   <!-- Barba.js -->
   <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
 
-  <!-- Add GSAP CDN to your HTML -->
+  <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollToPlugin.min.js"></script>
 
@@ -33,19 +32,23 @@
   <script src="https://cdn.jsdelivr.net/npm/sal.js/dist/sal.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sal.js/dist/sal.css" />
 
+  <!-- Marked.js -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
   <style>
     #map {
       width: 100%;
       height: 800px;
     }
     .marker {
-    /* Remove background and border so only the PNG is visible */
-    background: none;
-    border: none;
-    border-radius: 0;
+      background: none;
+      border: none;
+      border-radius: 0;
     }
   </style>
 </head>
+
+<!-- Header -->
 
 <body class="locked">
   <div data-barba="wrapper">
@@ -65,59 +68,69 @@
           </div>
         </header>
 
+
+<!-- Title Landing Page -->
+
         <section class="intro" data-sal="fade" data-sal-duration="1000" data-sal-delay="200">
           <div class="intro-content">
             <img src="assets/title logo.png" alt="Strayscapes Logo" class="intro-logo">
             <h1 class="tagline">Mapping stray lives across urban space</h1>
           </div>
-
-        <div class="scroll-indicator">
-          <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </div>
-
-
-         
+          <div class="scroll-indicator">
+            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
         </section>
 
+<!-- Mapbox Map -->
 
+        <section class="map-section">
+          <div id="map-container">
+            <div class="scroll-up-indicator" style="position: fixed; top: 20px; right: 20px; cursor: pointer; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s;">
+              <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="18 15 12 9 6 15"/>
+              </svg>
+            </div>
+            <div id="map"></div>
 
+<!-- Info Panel -->
+            <div id="info-panel">
+              <div id="info-panel-content">
+                <button id="close-panel" class="close-btn">×</button>
+                <h2 id="info-mode">
+                  <span id="sighting-name-text" contenteditable="false" spellcheck="false"></span>
+                  <button id="edit-name-button" title="Edit Name" class="icon-btn">
+                    <i data-feather="edit"></i>
+                  </button>
+                  <button id="confirm-rename-inline" title="Confirm Name" class="icon-btn" style="display: none;">
+                    <i data-feather="check"></i>
+                  </button>
+                </h2>
 
+<!-- Inline rename confirm button (hidden by default, can be removed if not used) -->
+                <div class="inline-rename" style="display: none;">
+                  <input type="text" id="rename-input" />
+                  <button id="confirm-rename-input" title="Confirm Name" class="icon-btn">
+                    <i data-feather="check"></i>
+                  </button>
+                </div>
 
+                <p id="info-timestamp"></p>
+                <img id="info-image" src="" alt="" style="cursor: pointer;" />
 
-    <section class="map-section">
-      <div id="map-container">
-              <div class="scroll-up-indicator" style="position: fixed; top: 20px; right: 20px; cursor: pointer; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s;">
-        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="18 15 12 9 6 15"/>
-        </svg>
-      </div>
-        <div id="map"></div>
+                <div id="description-wrapper">
+                  <p id="sighting-description" class="editable-description"></p>
+                </div>
+              </div>
+            </div>
 
-        <div id="info-panel" style="display: none;">
-          <button id="close-panel" class="close-btn">×</button>
-<h2 id="info-mode">
-  <span id="sighting-name-text"></span>
-  <button id="edit-name-button" title="Edit Name">✏️</button>
-</h2>
+            <input type="file" id="upload-image-input" style="display: none;" accept="image/*" />
+          </div>
+        </section>
 
-<div class="inline-rename" style="display: none;">
-  <input type="text" id="rename-input" />
-  <button id="confirm-rename" title="Confirm Name">✅</button>
-</div>
-
-
-          
-          
-          <p id="info-timestamp"></p>
-          <img id="info-image" src="" alt="" style="cursor: pointer;" />
-        </div>
-
-        <input type="file" id="upload-image-input" style="display: none;" accept="image/*" />
-      </div>
-    </section>
-
+ <!-- Story section -->
+       
 
         <section class="story-section" data-sal="fade" data-sal-duration="1000" data-sal-delay="200">
           <h2>Our Mission</h2>
@@ -128,54 +141,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.3/dist/umd/supabase.min.js"></script>
-  <script>
-
-
-    async function uploadImageAndSaveURL(file, sightingId, imgElement) {
-      const fileExt = file.name.split('.').pop();
-      const filePath = `sightings/${sightingId}-${Date.now()}.${fileExt}`;
-
-      const { data: uploadData, error: uploadError } = await supabase
-        .storage
-        .from('sighting-images')
-        .upload(filePath, file, { cacheControl: '3600', upsert: true });
-
-      if (uploadError) {
-        console.error('Upload failed:', uploadError.message);
-        return;
-      }
-
-      const { data: publicData, error: publicError } = supabase
-        .storage
-        .from('sighting-images')
-        .getPublicUrl(filePath);
-
-      if (publicError) {
-        console.error('Could not get public URL:', publicError.message);
-        return;
-      }
-
-      const publicURL = publicData.publicUrl;
-
-      const updateRes = await fetch(`https://pkefuiohsqaydfxbtjqk.supabase.co/rest/v1/sightings?id=eq.${sightingId}`, {
-        method: "PATCH",
-        headers: {
-          apikey: supabase.supabaseKey,
-          Authorization: `Bearer ${supabase.supabaseKey}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ image_url: publicURL })
-      });
-
-      if (!updateRes.ok) {
-        const errText = await updateRes.text();
-        console.error("Failed to update image_url in DB:", errText);
-        return;
-      }
-
-      if (imgElement) imgElement.src = publicURL;
-    }
-  </script>
-   <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

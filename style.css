@@ -1,21 +1,21 @@
-/* Reset + Base */
+/* =========================
+   RESET & BASE STYLES
+   ========================= */
 
 /* Hide scrollbar but still allow scrolling */
 body, html {
-  overflow: scroll;  /* Keep scrolling enabled */
+  overflow: scroll;
   scroll-behavior: smooth;
-
 }
 
 /* For Webkit browsers (Chrome, Safari, Edge, etc.) */
 body::-webkit-scrollbar {
-  width: 0px;  /* Make the scrollbar width 0 */
-  height: 0px; /* Make the horizontal scrollbar width 0 */
+  width: 0px;
+  height: 0px;
 }
 
 @font-face {
   font-family: 'Brushot';
-  /* Ensure the path is correct relative to the location of your CSS file */
   src: url('fonts/BRUSHOT-BOLD.TTF') format('truetype');
   font-weight: normal;
   font-style: normal;
@@ -24,9 +24,7 @@ body::-webkit-scrollbar {
 body.locked {
   overflow: hidden;
   height: 100vh;
-
 }
-
 
 body {
   margin: 0;
@@ -45,9 +43,13 @@ h2 {
   font-optical-sizing: auto;
   font-weight: 800;
   font-style: normal;
-  color: #f0ede3;
+  color: #ffe7c4;
   margin: 0;
 }
+
+/* =========================
+   HEADER & NAVIGATION
+   ========================= */
 
 header {
   background-image: url('assets/catpaw header.png');
@@ -58,51 +60,40 @@ header {
   z-index: 20;
   height: 80px;
   padding: 16px 20px 0;
-  display: flex;  /* Use flexbox for header */
-  align-items: center;  /* Vertically center the content inside header */
-  justify-content: space-between;  /* Ensures the logo stays on the left */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-
-/* Logo link */
 .logo-link {
   display: inline-block;
-  width: auto; /* Make sure the width is auto */
-  height: auto; /* Maintain aspect ratio */
-  z-index: 100; /* Ensure it's on top */
-  }
-
+  width: auto;
+  height: auto;
+  z-index: 100;
+}
 
 .logo {
   display: block;
-  width: 40px; /* Allow the image to scale */
+  width: 40px;
   height: auto;
-  pointer-events: auto; /* Make the image clickable */
-  margin-top: -38px; /* Move logo upwards by 10px (adjust as needed) */
-
+  pointer-events: auto;
+  margin-top: -38px;
 }
 
-
-
-
-/* Navigation container */
 .nav-container {
   display: flex;
   justify-content: center;
   width: 100%;
   position: relative;
-  padding-bottom: 38px;  /* This matches the header's padding-top */
-  padding-right: 75px;  /* This matches the header's padding-top */
-
+  padding-bottom: 38px;
+  padding-right: 75px;
 }
 
-/* Navigation links */
 .nav-links {
   display: flex;
   gap: 100px;
 }
 
-/* Navigation links styling */
 .nav-links a {
   font-family: "Ysabeau SC", sans-serif;
   font-optical-sizing: auto;
@@ -111,16 +102,17 @@ header {
   color: #f0ede3;
   font-size: 20px;
   transition: color 0.2s ease;
-  text-decoration: none; /* This removes the underline */
-
+  text-decoration: none;
 }
 
 .nav-links a:hover {
   color: #584f48;
 }
 
+/* =========================
+   INTRO SECTION
+   ========================= */
 
-/* Intro Section */
 .intro {
   height: 100vh;
   display: flex;
@@ -146,17 +138,20 @@ header {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-  font-family: 'Brushot', sans-serif; /* Apply your custom font here */
+  font-family: 'Brushot', sans-serif;
   font-weight: normal;
   color: #f0ede3;
   margin-top: 10px;
 }
 
-/* Visible class (GSAP will override this) */
 .tagline.visible {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* =========================
+   SCROLL INDICATORS
+   ========================= */
 
 .scroll-indicator {
   position: fixed;
@@ -167,30 +162,9 @@ header {
   animation: bounce 2s infinite;
   cursor: pointer;
   opacity: 0.7;
+  transition: opacity 0.6s ease;
 }
 
-/* for smooth scrolling */
-
-.scroll-up-indicator {
-  /* Initially hidden */
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.scroll-up-indicator.visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-
-.arrow-icon {
-  width: 2rem;
-  height: 2rem;
-  stroke: #f0ede3; /* color of the arrow */
-}
-
-/* Bounce animation */
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
     transform: translateX(-50%) translateY(0);
@@ -203,22 +177,35 @@ header {
   }
 }
 
-.scroll-indicator {
-  transition: opacity 0.6s ease;
+.scroll-up-indicator {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
+.scroll-up-indicator.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
 
+.arrow-icon {
+  width: 2rem;
+  height: 2rem;
+  stroke: #f0ede3;
+}
 
-
+/* =========================
+   MAP SECTION
+   ========================= */
 
 #map-container {
-  position: relative;   /* allows absolutely positioned children */
-  height: 800px;        /* same height as #map */
+  position: relative;
+  height: 800px;
   width: 100%;
 }
 
-/* Map Section */
 .map-section {
+  position: relative;
   height: 100vh;
   background-color: #231f1c;
 }
@@ -229,45 +216,37 @@ header {
   display: block;
 }
 
-.map-section {
-  position: relative;  /* add this */
-  height: 100vh;
-  background-color: #231f1c;
+.custom-marker {
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+  cursor: pointer;
 }
 
- .custom-marker {
-    width: 40px;
-    height: 40px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: block;
-    cursor: pointer;
-  }
+/* =========================
+   INFO PANEL & POPUP
+   ========================= */
 
-
-@media (max-width: 768px) {
-  #info-panel {
-    width: 90vw;
-    left: 5%; /* small left offset */
-    transform: translateY(-50%);
-  }
+/* Hide info panel scrollbar (Chrome, Edge, Safari) */
+#info-panel::-webkit-scrollbar {
+  display: none;
 }
-
-
 
 #info-panel {
-  align-items: center; /* horizontally center content */
-  justify-content: center; /* vertically center content if height is fixed */
-  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+  max-width: 400px;
+  width: 100%;
+  min-width: 300px;
   max-height: 700px;
-  width: auto;
   height: auto;
-  overflow: hidden;   /* prevents content overflow */
-  position: absolute; /* make sure it's positionable */
-  top: 50%;           /* center vertically */
-  left: 5%;          /* center horizontally */
-  
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 5%;
   transform: translateY(-50%);
   background-color: #231f1c;
   color: #f0ede3;
@@ -276,30 +255,160 @@ header {
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   display: none;
   z-index: 10;
-  overflow-y: scroll; /* enable vertical scrolling */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 8px; /* Reduce from 16px or higher to 8px or less */
+  opacity: 1;
+  transition: opacity 0.3s;
+  pointer-events: auto;
 }
 
+#info-panel-content {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
 
+#info-panel-content.transitioning {
+  opacity: 0;
+  pointer-events: none;
+}
 
+#info-panel.transitioning {
+  opacity: 0;
+  pointer-events: none;
+}
 
+@media (max-width: 500px) {
+  #info-panel {
+    max-width: 95vw;
+    min-width: 0;
+    left: 2.5vw;
+    padding: 8px;
+  }
+}
 
-
-
-
-/* Chrome, Edge, Safari */
-#info-panel::-webkit-scrollbar {
-  display: none;
+#close-panel {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: #f0ede3;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
 }
 
 #info-image {
-  max-width: 70vw;
-  max-height: 40vh;     /* max height allowing vertical images */
+  max-width: 100%;
+  width: 100%;
+  height: auto;
   display: block;
-  margin: 0 auto;         /* center horizontally */
-  object-fit: contain;    /* scale image proportionally */
+  margin: 0 auto;
+  object-fit: contain;
+  box-sizing: border-box;
 }
+
+#info-timestamp {
+  font-family: 'Arial', sans-serif;
+  font-size: 0.85rem;
+  color: #83776f;
+  margin-top: 4px;
+  margin-bottom: 10px;
+  opacity: 0.8;
+  text-align: left;
+}
+
+/* =========================
+   DESCRIPTION BOX
+   ========================= */
+
+#description-wrapper {
+  margin-top: 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  max-width: 100%;
+
+ 
+}
+
+.editable-description {
+  display: block;           /* Ensure block-level, fills width */
+  width: 100%;              /* Fill the wrapper */
+  min-height: 40px;         /* Always at least 40px tall */
+  background: rgba(255,255,255,0.00); /* Your existing background */
+  padding: 0px 0px;
+  box-sizing: border-box;
+  margin-bottom: 0;      /* Add this line */
+  border-radius: 6px;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #eedad1;
+  transition: background 0.2s ease;
+  cursor: pointer;
+  scrollbar-width: thin;
+  scrollbar-color: #83776f transparent;
+  border: 10px solid transparent; /* Always reserve space for border */
+}
+
+.editable-description[contenteditable="true"] {
+  cursor: text;
+  border: 1px dashed #7c634d;   /* Only color changes, not size */
+  background: rgba(85, 68, 58, 0.01);
+  outline: none;                /* Remove outline if present */
+}
+
+/* Custom scrollbar for the description box */
+.editable-description::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+.editable-description::-webkit-scrollbar-thumb {
+  background: #83776f;
+  border-radius: 6px;
+}
+
+.editable-description::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.editable-description::-webkit-scrollbar-button {
+  display: none;
+}
+
+.editable-description p,
+.editable-description ul,
+.editable-description ol,
+.editable-description li,
+.editable-description pre,
+.editable-description blockquote {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+#description-wrapper {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.editable-description {
+  margin-bottom: 0;
+  padding-bottom: 0px; /* or less if you want it even tighter */
+}
+
+/* =========================
+   RENAME/EDIT CONTROLS
+   ========================= */
 
 .rename-wrapper {
   margin-top: 10px;
@@ -309,83 +418,44 @@ header {
   padding: 5px;
   width: 150px;
   margin-right: 5px;
+  font-size: 1rem;
+  background-color: #2e2a27;
+  color: #f0ede3;
+  border: 1px solid #888;
+  border-radius: 4px;
 }
 
-#rename-button {
-  padding: 5px 10px;
-}
-
-
-
-
-#close-panel {
-  position: absolute;
-  top: 15px;   /* distance from top */
-  right: 20px; /* distance from right */
-  background: transparent;
+.icon-btn {
+  background: none;
   border: none;
-  color: #f0ede3; /* Change to your desired color */
-  font-size: 32px;
-  font-weight: bold;
   cursor: pointer;
-  padding: 0;
-  margin: 0;
-  line-height: 1;
+  padding: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
-
-
-
-/* Story Section */
-.story-section {
-  padding: 80px 20px;
-  background-color: #1b1815;
-  color: #333;
+.icon-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: #837569;
+  transition: transform 0.2s ease;
 }
 
-
-
-/* BUBBLE Popup styling */
-.popup-content {
-  min-width: 220px;
-  min-height: 140px;
-  text-align: center;
-  font-family: Arial, sans-serif;
-  color: #000000;
+#confirm-rename svg {
+  stroke: #837569;
 }
 
-.popup-content strong {
-  font-size: 1.2em;
+.icon-btn:hover svg {
+  transform: scale(1.1);
 }
 
-.popup-content small {
-  color: #070404;
-  font-size: 0.9em;
+#sighting-name-text[contenteditable="true"] {
+  outline: none;
+  border-bottom: 1px dotted #83776f;
+  white-space: nowrap;
+  overflow: hidden;
 }
-
-.popup-image {
-  width: 120px;
-  height: auto;
-  margin-top: 8px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-}
-
-.mapboxgl-popup-content {
-  background-color: #ffead9!important; /* dark background */
-  color: #eee !important; /* light text */
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.7);
-  font-family: Arial, sans-serif;
-}
-
-.mapboxgl-popup-tip {
-  border-top-color: #222 !important; /* color of the popup "tip" arrow */
-}
-
-
-
 
 .inline-rename {
   display: flex;
@@ -405,16 +475,165 @@ header {
 
 #edit-name-button:hover,
 #confirm-rename:hover {
-  color: #c5bfb2;
+  color: #c5bfbf;
 }
 
-#rename-input {
-  font-size: 1rem;
-  padding: 4px 6px;
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
   background-color: #2e2a27;
   color: #f0ede3;
-  border: 1px solid #888;
-  border-radius: 4px;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+footer h2 {
+  font-size: 24px;
+  margin: 0 0 20px 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+
+footer p {
+  font-size: 16px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+footer a {
+  color: #f0ede3;
+  text-decoration: underline;
+}
+
+footer a:hover {
+  color: #c5bfbf;
+}
+
+/* =========================
+   MEDIA QUERIES
+   ========================= */
+
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 20px;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background-color: #231f1c;
+    padding: 20px 0;
+    display: none;
+    z-index: 0;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-container {
+    padding-right: 20px;
+  }
+
+  header {
+    padding: 10px 20px;
+    height: 70px;
+  }
+
+  .logo {
+    width: 35px;
+    margin-top: -35px;
+  }
+
+  .intro {
+    padding-top: 70px;
+  }
+
+  .tagline {
+    font-size: 28px;
+  }
+
+  #map-container {
+    height: 600px;
+  }
+
+  #info-panel {
+    max-width: 90%;
+    left: 5%;
+    padding: 16px;
+  }
+
+  #close-panel {
+    top: 10px;
+    right: 10px;
+  }
+
+  #info-image {
+    max-height: 300px;
+  }
+
+  #rename-input {
+    width: 100px;
+  }
+
+  footer {
+    padding: 30px 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .nav-links {
+    gap: 15px;
+  }
+
+  header {
+    padding: 8px 10px;
+    height: 60px;
+  }
+
+  .logo {
+    width: 30px;
+    margin-top: -30px;
+  }
+
+  .intro {
+    padding-top: 60px;
+  }
+
+  .tagline {
+    font-size: 24px;
+  }
+
+  #map-container {
+    height: 400px;
+  }
+
+  #info-panel {
+    max-width: 95%;
+    left: 2.5%;
+    padding: 8px;
+  }
+
+  #close-panel {
+    top: 8px;
+    right: 8px;
+  }
+
+  #info-image {
+    max-height: 200px;
+  }
+
+  #rename-input {
+    width: 80px;
+  }
+
+  footer {
+    padding: 20px 5px;
+  }
 }
 
 
