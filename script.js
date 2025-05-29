@@ -102,6 +102,7 @@ const introSection = document.querySelector('.intro');
 const scrollUpIndicator = document.querySelector('.scroll-up-indicator');
 const scrollDownIndicator = document.querySelector('.scroll-indicator');
 const mapSection = document.querySelector('.map-section');
+const mapContainer = document.getElementById('map');
 
 let hasUnlocked = false;
 let scrollDelta = 0;
@@ -113,6 +114,11 @@ window.addEventListener('load', () => {
 });
 
 window.addEventListener('wheel', (e) => {
+  // Ignore scroll events if the target is within the map container
+  if (mapContainer.contains(e.target)) {
+    return;
+  }
+
   const scrollY = window.scrollY;
 
   if (!hasUnlocked) {
@@ -142,6 +148,11 @@ window.addEventListener('wheel', (e) => {
 }, { passive: false });
 
 window.addEventListener('scroll', () => {
+  // Ignore scroll events if the target is within the map container
+  if (mapContainer.contains(document.activeElement)) {
+    return;
+  }
+
   const scrollY = window.scrollY;
 
   if (hasUnlocked && scrollY < 100) {
