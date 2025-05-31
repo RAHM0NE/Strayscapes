@@ -60,10 +60,10 @@
           </a>
           <div class="nav-container">
             <nav class="nav-links">
-              <a href="home.html">home</a>
-              <a href="about.html">about</a>
-              <a href="map.html">map</a>
-              <a href="contact.html">contact</a>
+              <a href="#home.section">home</a>
+              <a href="#map-section">map</a>
+              <a href="#about-section">about</a>
+              <a href="#contact-section">contact</a>
             </nav>
           </div>
         </header>
@@ -71,7 +71,7 @@
 
 <!-- Title Landing Page -->
 
-        <section class="intro" data-sal="fade" data-sal-duration="1000" data-sal-delay="200">
+        <section class="intro" data-sal="fade" data-sal-duration="1000" data-sal-delay="200" id="home.section">
           <div class="intro-content">
             <img src="assets/title logo.png" alt="Strayscapes Logo" class="intro-logo">
             <h1 class="tagline">Mapping stray lives across urban space</h1>
@@ -85,7 +85,7 @@
 
 <!-- Mapbox Map -->
 
-        <section class="map-section">
+        <section class="map-section" id="map-section">
           <div id="map-container">
             <div class="scroll-up-indicator" style="position: fixed; top: 20px; right: 20px; cursor: pointer; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s;">
               <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -132,13 +132,52 @@
  <!-- Story section -->
        
 
-        <section class="story-section" data-sal="fade" data-sal-duration="1000" data-sal-delay="200">
-          <h2>Our Mission</h2>
-          <p>We track London’s street cats through community sightings...</p>
-        </section>
-      </div>
-    </div>
-  </div>
+            <section class="story-section"  data-sal="fade" data-sal-duration="1000" data-sal-delay="200" id="about-section">
+              <div class="story-lead-flex">
+                <div class="story-lead-text">
+                  <h1 class="story-title">A common codependency overlooked.</h1>
+                  <p class="story-lead">
+                    Strayscapes is not only a tool for observing the movements and behaviors of urban stray animals — it also serves as a platform for exploring how non-human life adapts to and shapes city environments. By mapping sightings, identifying patterns of territory, and correlating animal activity with human infrastructure, Strayscapes provides valuable insights for urban planning, environmental research, and community engagement. Its applications span from informing local authorities and animal welfare groups to contributing to discussions in urban ecology, spatial justice, and more-than-human design thinking. Ultimately, Strayscapes helps us rethink how cities function when we view them through the presence of other species.
+                  </p>
+                </div>
+                <img src="assets\lorecat.JPEG" alt="Lorecat" class="lorecat-img" />
+              </div>
+            </section>
+
+            <section class="story-data-section" data-sal="fade" data-sal-duration="1000" data-sal-delay="200">
+              <div class="story-data-block">
+                <img src="assets/SE London Data.png" alt="South East London Data" class="story-data-img" />
+                <div class="story-data-explanation">
+                  <h2>Understanding our encounter bubbles</h2>
+                  <p>
+                    <em>Placeholder:</em> This visualisation shows the distribution and frequency of stray animal sightings across South East London. Each icon represents a common sighting spot, with opacity indicating frequency. The legend explains the codes and icons used.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="story-data-section --last" data-sal="fade" data-sal-duration="1000" data-sal-delay="200">
+              <div class="story-data-block right-image">
+                <img src="assets/Neighbourhood Data.png" alt="Another Data Visualisation" class="story-data-img" />
+                <div class="story-data-explanation">
+                  <h2>Investigating the Overlaps</h2>
+                  <p>
+                    <em>Placeholder:</em> This section explains the insights from another dataset. You can describe what this visualisation shows, highlight trends, or provide context for the data.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="contact-section" data-sal="fade" data-sal-duration="1000" data-sal-delay="200" id="contact-section">
+                <span>Let's improve Strayscapes together:</span>
+                <a href="https://instagram.com/yourusername" target="_blank" class="contact-icon" aria-label="Instagram">
+                  <img src="assets\insta.png" alt="Instagram" />
+                </a>
+                <!-- Add more icons/links as needed -->
+              </div>
+            </section>
+
+
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.3/dist/umd/supabase.min.js"></script>
   <script src="script.js"></script>

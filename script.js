@@ -13,12 +13,16 @@ const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 const tableName = "sightings";
 
-// Helper: Convert DDMM.MMMM to Decimal Degrees
+// Helper: Convert DDMM.MMMM or DDDMM.MMMM to Decimal Degrees
 function convertDDMMtoDecimal(coord) {
   const sign = coord < 0 ? -1 : 1;
   const absCoord = Math.abs(coord);
-  const deg = Math.floor(absCoord / 100);
-  const min = absCoord % 100;
+  const str = absCoord.toString();
+  const dotIndex = str.indexOf('.');
+  // Degrees: all digits before the last 2 before the decimal
+  const degLength = dotIndex === -1 ? str.length - 2 : dotIndex - 2;
+  const deg = parseInt(str.slice(0, degLength), 10);
+  const min = parseFloat(str.slice(degLength));
   return sign * (deg + (min / 60));
 }
 
@@ -202,10 +206,12 @@ window.addEventListener('scroll', () => {
 // 4. MAP & MARKERS
 // ==========================
 
+
+
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/dark-v11',
-  center: [-0.1276, 51.5072],
+  center: [0.026, 51.49],
   zoom: 11
 });
 
@@ -219,8 +225,8 @@ fetch(`${supabaseUrl}/rest/v1/${tableName}`, {
   .then(data => {
     data.forEach(sighting => {
       const { latitude, longitude, mode, timestamp } = sighting;
-      const lat = convertDDMMtoDecimal(latitude);
-      const lon = convertDDMMtoDecimal(longitude);
+      const lat = parseFloat(latitude);
+      const lon = parseFloat(longitude);
 
       if (
         typeof lat === "number" &&
@@ -489,8 +495,19 @@ barba.init({
   }]
 });
 
+barba.hooks.afterEnter(() => {
+  // Scroll to hash if present
+  if (window.location.hash) {
+    const el = document.querySelector(window.location.hash);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+});
+
 // --- SAL Init ---
 sal();
 
 // --- Feather Icons ---
 feather.replace();
+

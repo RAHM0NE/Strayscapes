@@ -8,6 +8,10 @@ body, html {
   scroll-behavior: smooth;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* For Webkit browsers (Chrome, Safari, Edge, etc.) */
 body::-webkit-scrollbar {
   width: 0px;
@@ -109,6 +113,10 @@ header {
   color: #584f48;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* =========================
    INTRO SECTION
    ========================= */
@@ -197,6 +205,10 @@ header {
 /* =========================
    MAP SECTION
    ========================= */
+
+#map-section {
+  scroll-margin-top: 100px; /* Adjust as needed for your header/spacing */
+}
 
 #map-container {
   position: relative;
@@ -636,7 +648,236 @@ footer a:hover {
   }
 }
 
+/* =========================
+   STORY SECTION
+   ========================= */
+
+.story-section {
+  max-width: 1600px;
+  margin-left: auto; /* or 0 if you want it flush left */
+  margin-right: auto;
+  padding: 100px 24px 60px 24px;
+  background: none;
+  text-align: left;
+}
+
+.story-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #ffe7c4;
+  margin-bottom: 32px;
+  margin-top: 0;
+  text-align: left;
+  line-height: 1.1;
+}
+
+.story-lead {
+  font-family: "Inter", sans-serif;
+  font-size: 1.5rem; /* Same as h2 */
+  color: #a18c74;
+  font-weight: 400;
+  text-align: left;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 800px;
+}
+
+.story-lead-flex {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.story-lead-text {
+  flex: 1 1 0;
+  min-width: 280px;
+}
+
+.lorecat-img {
+  flex: 0 0 800px;   /* Image takes up only 350px and doesn't grow */
+  width: 350px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  object-fit: cover;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 900px) {
+  .story-lead-flex {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .lorecat-img {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* =========================
+   STORY DATA BLOCK
+   ========================= */
 
 
+.story-data-img {
+  width: 1080px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  background: #181716;
+}
+
+.story-data-explanation {
+  flex: 1 1 0;       /* Text takes up remaining space */
+  min-width: 220px;
+  max-width: 1000px; /* Or as wide as you want */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.story-data-explanation {
+  max-width: 900px;
+}
+.story-data-explanation p {
+  max-width: 900px;
+}
+
+.story-data-explanation h2 {
+  font-size: 2rem;
+  color: #ffe7c4;
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+}
+
+.story-data-explanation p {
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem; /* Same as h2 */
+  color: #a18c74;
+  font-weight: 400;
+  text-align: left;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 800px;
+}
+
+@media (max-width: 900px) {
+  .story-data-block {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .story-data-img {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.story-data-section {
+  max-width: 1600px;      /* or larger if needed for your image+text */
+  margin-left: auto;      /* center the section */
+  margin-right: auto;
+  padding: 60px 24px 60px 24px;
+  background: none;
+  text-align: left;
+}
+
+
+.story-data-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  margin-top: 48px;
+  margin-bottom: 32px;
+}
+
+/* Place image on the right and text on the left for this block only */
+.story-data-block.right-image {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+
+@media (max-width: 900px) {
+  .story-data-block.right-image {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+.story-data-section--last {
+  margin-bottom: 200px; /* or whatever space you want */
+}
+
+/* =========================
+   CONTACT SECTION
+   ========================= */
+.contact-section {
+  width: 100%;
+  background: #dac8ba;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40px;
+}
+
+.contact-content {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-family: "Inter", sans-serif;
+  color: #ffe7c4;
+  font-size: 1.1rem;
+}
+
+.contact-icon img {
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+  vertical-align: middle;
+  filter: brightness(0.95) sepia(0.2) hue-rotate(-20deg) saturate(1.2);
+  transition: filter 0.2s;
+}
+
+.contact-icon img:hover {
+  filter: brightness(1.2) sepia(0.5) hue-rotate(-10deg) saturate(2);
+}
+
+.contact-section span {
+  font-family: 'Inter', sans-serif; /* Or any font you prefer */
+  font-weight: 700;                 /* Optional: make it bold */
+  font-size: 1rem;                /* Optional: adjust size */
+  color: #231f1c;                   /* Optional: adjust color */
+  letter-spacing: 0.5px;            /* Optional: adjust spacing */
+}
+
+.contact-icon img {
+  height: 28px;      /* Set the desired height */
+  width: auto;       /* Let width scale naturally */
+  display: inline-block;
+  vertical-align: middle;
+  filter: brightness(0.95) sepia(0.2) hue-rotate(-20deg) saturate(1.2);
+  transition: filter 0.2s;
+}
+
+#about-section {
+  scroll-margin-top: 100px; /* Adjust for your header height */
+}
+
+
+#contact-section {
+  scroll-margin-top: 100px; /* Adjust for your header height */
+}
+
+#map-section {
+  scroll-margin-top: 100px; /* Adjust for your header height */
+}
 
 
