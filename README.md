@@ -1,14 +1,11 @@
-# Strayscapes
 
-**Mapping stray lives across urban space**
+![Strayscapes Screenshot](assets/title%20logo.png)
 
----
 
-## Overview
+
 
 Strayscapes is a community-driven platform that visualizes and maps the lives of stray animals—primarily cats and foxes—across urban environments. By collecting sightings and stories, Strayscapes aims to foster a deeper understanding of how these animals interact with our cities and how urban planning can impact their lives.
 
-![Strayscapes Screenshot](assets/title%20logo.png)
 
 ---
 
