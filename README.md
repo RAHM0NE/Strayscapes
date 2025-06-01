@@ -26,9 +26,6 @@ Strayscapes is a community-driven platform that visualizes and maps the lives of
 - **Data Visualizations:**  
   Explore visual data on animal movement and behavior in different neighborhoods.
 
-- **Responsive Design:**  
-  Optimized for desktop and mobile devices.
-
 ---
 
 ## Technologies Used
@@ -68,13 +65,6 @@ Strayscapes is a community-driven platform that visualizes and maps the lives of
 
 - **Contribute:**  
   Use the contact section or reach out via [Instagram](https://instagram.com/03ryuusei) to share your own stories or feedback.
-
----
-
-## Contact
-
-Let's improve Strayscapes together!  
-[Instagram: @03ryuusei](https://instagram.com/03ryuusei)
 
 ---
 
