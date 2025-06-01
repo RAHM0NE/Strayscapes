@@ -65,7 +65,7 @@ async function uploadImageAndSaveURL(file, sightingId) {
       return null;
     }
 
-    // Update the sighting row with the image URL
+    // Update the sighting row with the image 
     const { error: updateError } = await supabase
       .from(tableName)
       .update({ image_url: publicUrl })
@@ -118,7 +118,7 @@ window.addEventListener('load', () => {
 });
 
 window.addEventListener('wheel', (e) => {
-  // Ignore scroll events if the target is within the map container
+  // Ignore scroll events 
   if (mapContainer.contains(e.target)) {
     return;
   }
@@ -133,6 +133,10 @@ window.addEventListener('wheel', (e) => {
       tagline.classList.add('visible');
       gsap.to(tagline, { opacity: 1, duration: 0.5 });
 
+      // Show the scroll indicator?
+      document.querySelector('.scroll-indicator').style.opacity = '1';
+      document.querySelector('.scroll-indicator').style.pointerEvents = 'auto';
+
       setTimeout(() => {
         document.body.classList.remove('locked');
       }, 1000);
@@ -146,10 +150,36 @@ window.addEventListener('wheel', (e) => {
       tagline.classList.remove('visible');
       gsap.to(tagline, { opacity: 0, duration: 0.5 });
       hasUnlocked = false;
+      document.querySelector('.scroll-indicator').style.opacity = '0';
+      document.querySelector('.scroll-indicator').style.pointerEvents = 'none';
     }
   }
   lastScrollY = scrollY;
 }, { passive: false });
+
+document.querySelector('.scroll-indicator').addEventListener('click', () => {
+  window.scrollBy({
+    top: window.innerHeight * 0.5,
+    behavior: 'smooth'
+  });
+  // Hide the scroll indicator after click
+  document.querySelector('.scroll-indicator').style.opacity = '0';
+  document.querySelector('.scroll-indicator').style.pointerEvents = 'none';
+});
+
+window.addEventListener('scroll', () => {
+  const mapTop = mapSection.getBoundingClientRect().top;
+  const mapBottom = mapSection.getBoundingClientRect().bottom;
+  const windowHeight = window.innerHeight;
+
+  // If any part of the map section is visible, hide the scroll indicator
+  if (mapTop < windowHeight && mapBottom > 0) {
+    document.querySelector('.scroll-indicator').style.opacity = '0';
+    document.querySelector('.scroll-indicator').style.pointerEvents = 'none';
+  }
+});
+
+
 
 window.addEventListener('scroll', () => {
   // Ignore scroll events if the target is within the map container
@@ -165,6 +195,9 @@ window.addEventListener('scroll', () => {
     gsap.to(tagline, { opacity: 0, duration: 0.5 });
     hasUnlocked = false;
     scrollDelta = 0;
+    // Hide the scroll indicator when relocking
+    document.querySelector('.scroll-indicator').style.opacity = '0';
+    document.querySelector('.scroll-indicator').style.pointerEvents = 'none';
   }
   lastScrollY = scrollY;
 });
@@ -176,16 +209,6 @@ document.querySelector('.scroll-indicator').addEventListener('click', () => {
   });
 });
 
-window.addEventListener('scroll', function () {
-  const indicator = document.querySelector('.scroll-indicator');
-  if (window.scrollY > 90) {
-    indicator.style.opacity = '0';
-    indicator.style.pointerEvents = 'none';
-  } else {
-    indicator.style.opacity = '1';
-    indicator.style.pointerEvents = 'auto';
-  }
-});
 
 scrollDownIndicator.addEventListener('click', () => {
   if (document.body.classList.contains('locked')) {
@@ -276,7 +299,7 @@ fetch(`${supabaseUrl}/rest/v1/${tableName}`, {
           if (infoPanel.style.display === "block") {
             infoPanelContent.classList.add('transitioning');
             setTimeout(() => {
-              // Update panel content here (name, image, description, etc.)
+              // Update panel content 
               sightingNameText.textContent = sighting.mode || "Unnamed Animal";
               sightingNameText.style.display = "inline";
               editNameButton.style.display = "inline";
