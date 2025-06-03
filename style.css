@@ -208,7 +208,7 @@ html {
    ========================= */
 
 #map-section {
-  scroll-margin-top: 100px; /* Adjust as needed for your header/spacing */
+  scroll-margin-top: 100px; 
 }
 
 #map-container {
@@ -271,7 +271,7 @@ html {
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding-bottom: 8px; /* Reduce from 16px or higher to 8px or less */
+  padding-bottom: 8px; 
   opacity: 1;
   transition: opacity 0.3s;
   pointer-events: auto;
@@ -353,13 +353,13 @@ html {
 }
 
 .editable-description {
-  display: block;           /* Ensure block-level, fills width */
-  width: 100%;              /* Fill the wrapper */
-  min-height: 40px;         /* Always at least 40px tall */
-  background: rgba(255,255,255,0.00); /* Your existing background */
+  display: block;          
+  width: 100%;            
+  min-height: 40px;       
+  background: rgba(255,255,255,0.00); 
   padding: 0px 0px;
   box-sizing: border-box;
-  margin-bottom: 0;      /* Add this line */
+  margin-bottom: 0;     
   border-radius: 6px;
   font-size: 0.8rem;
   line-height: 1.4;
@@ -368,14 +368,14 @@ html {
   cursor: pointer;
   scrollbar-width: thin;
   scrollbar-color: #83776f transparent;
-  border: 10px solid transparent; /* Always reserve space for border */
+  border: 10px solid transparent;
 }
 
 .editable-description[contenteditable="true"] {
   cursor: text;
   border: 1px dashed #7c634d;   /* Only color changes, not size */
   background: rgba(85, 68, 58, 0.01);
-  outline: none;                /* Remove outline if present */
+  outline: none;                
 }
 
 /* Custom scrollbar for the description box */
@@ -416,7 +416,7 @@ html {
 
 .editable-description {
   margin-bottom: 0;
-  padding-bottom: 0px; /* or less if you want it even tighter */
+  padding-bottom: 0px;
 }
 
 /* =========================
@@ -655,7 +655,7 @@ footer a:hover {
 
 .story-section {
   max-width: 1600px;
-  margin-left: auto; /* or 0 if you want it flush left */
+  margin-left: auto; 
   margin-right: auto;
   padding: 100px 24px 60px 24px;
   background: none;
@@ -675,7 +675,7 @@ footer a:hover {
 
 .story-lead {
   font-family: "Inter", sans-serif;
-  font-size: 1.5rem; /* Same as h2 */
+  font-size: 1.5rem; 
   color: #aa896e;
   font-weight: 400;
   text-align: left;
@@ -696,7 +696,7 @@ footer a:hover {
 }
 
 .lorecat-img {
-  flex: 0 0 800px;   /* Image takes up only 350px and doesn't grow */
+  flex: 0 0 800px;   
   width: 350px;
   max-width: 100%;
   height: auto;
@@ -732,9 +732,9 @@ footer a:hover {
 }
 
 .story-data-explanation {
-  flex: 1 1 0;       /* Text takes up remaining space */
+  flex: 1 1 0;       
   min-width: 220px;
-  max-width: 1000px; /* Or as wide as you want */
+  max-width: 1000px; 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -753,13 +753,13 @@ footer a:hover {
   margin-top: 30px;
   margin-bottom: 30px;
   font-family: "Inter", sans-serif;
-  line-height: 1.1; /* Try 1.1, 1.05, or even 1 for tighter lines */
+  line-height: 1.1;
   font-weight: 800;
 }
 
 .story-data-explanation p {
   font-family: "Inter", sans-serif;
-  font-size: 1.2rem; /* Same as h2 */
+  font-size: 1.2rem; 
   color: #aa896e;
   font-weight: 400;
   text-align: left;
@@ -780,8 +780,8 @@ footer a:hover {
 }
 
 .story-data-section {
-  max-width: 1600px;      /* or larger if needed for your image+text */
-  margin-left: auto;      /* center the section */
+  max-width: 1600px;      
+  margin-left: auto;     
   margin-right: auto;
   padding: 60px 24px 60px 24px;
   background: none;
@@ -797,7 +797,6 @@ footer a:hover {
   margin-bottom: 32px;
 }
 
-/* Place image on the right and text on the left for this block only */
 .story-data-block.right-image {
   display: flex;
   flex-direction: row-reverse;
@@ -814,7 +813,7 @@ footer a:hover {
 }
 
 .story-data-section--last {
-  margin-bottom: 200px; /* or whatever space you want */
+  margin-bottom: 200px; 
 }
 
 /* =========================
@@ -853,16 +852,16 @@ footer a:hover {
 }
 
 .contact-section span {
-  font-family: 'Inter', sans-serif; /* Or any font you prefer */
-  font-weight: 700;                 /* Optional: make it bold */
-  font-size: 1rem;                /* Optional: adjust size */
-  color: #231f1c;                   /* Optional: adjust color */
-  letter-spacing: 0.5px;            /* Optional: adjust spacing */
+  font-family: 'Inter', sans-serif; 
+  font-weight: 700;              
+  font-size: 1rem;               
+  color: #231f1c;                   
+  letter-spacing: 0.5px;           
 }
 
 .contact-icon img {
-  height: 28px;      /* Set the desired height */
-  width: auto;       /* Let width scale naturally */
+  height: 28px;      
+  width: auto;     
   display: inline-block;
   vertical-align: middle;
   filter: brightness(0.95) sepia(0.2) hue-rotate(-20deg) saturate(1.2);
@@ -870,16 +869,16 @@ footer a:hover {
 }
 
 #about-section {
-  scroll-margin-top: 100px; /* Adjust for your header height */
+  scroll-margin-top: 100px;
 }
 
 
 #contact-section {
-  scroll-margin-top: 100px; /* Adjust for your header height */
+  scroll-margin-top: 100px; 
 }
 
 #map-section {
-  scroll-margin-top: 100px; /* Adjust for your header height */
+  scroll-margin-top: 100px;
 }
 
 
